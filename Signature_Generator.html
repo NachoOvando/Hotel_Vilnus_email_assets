@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Generador de firma — Grand Hotel Vilnius</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; background:#f2f2f2; margin:0; padding:30px 16px; }
+  .panel { max-width:640px; margin:0 auto; background:#ffffff; border-radius:10px; padding:24px; box-shadow:0 2px 10px rgba(0,0,0,0.08); }
+  .instrucciones { font-size:13px; color:#444; line-height:1.5; margin-bottom:18px; padding:12px 14px; background:#fffbe6; border-left:4px solid #fbd015; border-radius:4px; }
+  .editable { outline: 1px dashed #c9c9c9; cursor: text; }
+  .editable:focus { outline: 2px solid #1a73e8; background:#eef6ff; }
+  .editable a, .editable a:link, .editable a:visited { color: inherit !important; text-decoration: none !important; }
+  .editable * { color: inherit !important; text-decoration: none !important; background: transparent !important; }
+  #copyBtn { display:block; width:100%; margin-top:20px; padding:14px; background:#1a1a1a; color:#ffffff; border:none; border-radius:6px; font-size:15px; font-weight:bold; cursor:pointer; }
+  #copyBtn:hover { background:#fbd015; color:#1a1a1a; }
+  #status { text-align:center; font-size:13px; margin-top:10px; color:#2e7d32; font-weight:bold; min-height:18px; }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <div class="instrucciones">
+    <strong>How to use this:</strong><br>
+    1) Click on each field with a dashed border (name, title, phone, email, address) and type in the person's details.<br>
+    2) Click the <strong>"Copy signature"</strong> button.<br>
+    3) In Gmail: ⚙️ Settings → See all settings → General tab → Signature → paste it there (Ctrl+V).<br>
+    4) Save changes at the bottom of the Gmail page.
+  </div>
+
+  <!-- ===== FIRMA (esto es lo que se copia) ===== -->
+  <table id="firma-container" width="600" cellpadding="0" cellspacing="0" border="0" style="margin:0;padding:0;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+
+    <tr>
+      <td style="padding:24px 24px 24px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="150" valign="middle" style="padding-right:20px;">
+              <a href="https://www.grandhotelvilnius.com/" target="_blank" style="text-decoration:none;border:0;">
+                <img src="https://raw.githubusercontent.com/NachoOvando/Hotel_Vilnus_email_assets/main/LOGO.png" width="140" height="140" alt="Grand Hotel Vilnius" style="display:block;border:0;width:140px;height:140px;" />
+              </a>
+            </td>
+            <td width="3" style="background-color:#fbd015;padding:0;" valign="middle">
+              <div style="width:3px;height:120px;background-color:#fbd015;font-size:0;line-height:0;">&nbsp;</div>
+            </td>
+            <td valign="middle" style="padding-left:20px;">
+              <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td class="editable" contenteditable="true" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;letter-spacing:0.5px;padding-bottom:4px;">NAME</td>
+                </tr>
+                <tr>
+                  <td class="editable" contenteditable="true" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:400;color:#1a1a1a;letter-spacing:2px;text-transform:uppercase;padding-bottom:12px;">Position</td>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#5c5c5c;padding-bottom:6px;">
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                      <tr>
+                        <td width="18" valign="middle" style="padding-right:7px;">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAE1klEQVR4nO2aXWhbZRjH/8/JSWmSKbKpxQ9sbub8QsVNcVLQVTtFxJsZdyEyUOmN9CKkSdOgePQi5pwQIyuolNGLsqv2arh5IdpFoShjTgQpFqHMj1GcQ9rS9tQk5zxerIUZT3JO3pOcpu78bp/n+b/P+8/75rx5TwAfHx8fHx+f6xWyS0gkEjfLsvwJMz8HIOJAc5GIjquqmnPfXvuR7BI2J38EziYPALcx8/vJZDLmrjVvsDWAmZ8VEpak50XqvMbWAIc5/8E0zT0idV7jZHKrQsKSFBKp8xonBqyICDPz9b0CANwlWOcptgYQ0RVB7T1DQ0M3CtZ6hq0Bpmn+LCoeDocfFq31CidbYN6F/gEXtZ7QVgNM03xKtNYrbA0IBAI/iYoTUb+iKN2i9V5ga0Aul7sIYFFQP6LrekdvA0enPGY+62IM00Vt23FkABHNCOqfD4VC3wrWeoIjAyRJElkB87Isv6goys5fAblcboGI5pyKEtGcLMtPZrNZ0e8Oz3D8S4+ZTzpMnQ8EAs9ks9k/BHvyFMcGVCqVSQCGTdq8LMuHdsInv4VjA4rF4iUApQYpO27yQJOXHUR0ok7o4k7Z87U0ZcDCwsI0AKsfRz0bGxtdrWnJW5oyYHp62mBmzSIUkmX53Rb15ClN3/dFIpFJAL9ZhI6l0+n97lvylqYNUBSlzMzvWWmZpjmhKMqO2gpCN76RSGQCwDcWoQd1XX/bXUveYvtmqB7JZPIRIjoHIFATqhLR06qqfu2uNW8QWgEAkM/nLwD42CIkM/NUKpW6U7wt7xA2AADC4fAorG+MegBMx+Pxjn834MoARVFWiSgGQLcIPx4MBqcGBweDbsZoN7X7t2lmZ2cv9/X1XQHwgkX47u7u7ujAwMCpUqnEbsdqB8JfgrWkUqlJAK9axZj55PLy8mvj4+MVEe1YLBbo7e19DIC5srJyQVTHipYZoChKl67rnzLz4ToppyuVysvFYtFqu9Qlk8n0VKvVMwD2AwARrTDzF8xckiTpu3K5/H2zmtfSMgMAQFGUXWtrazNE9GidlHMAjmia9rsTvUwm02MYxgwz32eTukhEvwJYBrDMzEtEdEZV1VN2Y7TUAAAYHR29xTCMrwDcWyflsiRJR3O5XKmRThOTrwsRJVRV/aBhjqh4I+Lx+O5gMHgawME6KVUABV3X3xkbG/u7Njg8PHyrJElfAnjATR9EdElV1YbnEVePwXoUi8W/wuHwYSL6vE6KDGAkFAqdT6VS/3pvkMlkegKBwFm4nDwAMPMddjltWQFbKIrStb6+fgJ1ng6bmEQ0WS6X3wqFQlW3y74WTdMazrGtBmyRSqUGAXwIoNHJcA3AnwCirRzbzoC2bAGLJsYNwzgA4McGaRG0ePJO8MQAACgUCnPhcPgggOOwv132DE+2QC0jIyMPMfNHAJ5o91gdsQVqUVX1B03T+pj5dQC/bEcPW2yLAZtwPp+fWFpa2svMx5hZ+H8IbtiWLWBFLBYLRKPRlyRJeoOZ+9GiD6cjHoPNsnmb9Aqunh/udyG1qmnaDY0SOtKAa0mn01HDMPoBHCKifgC3N1E+pWna0UYJHW9ALYlEoleSpH0A9hHRPQD2AtgN4CZcPUvs2kz9zDCMNwuFguj/HH18fHx8fHz+5/wDvLyIV+xa0H4AAAAASUVORK5CYII=" width="16" height="16" alt="" style="display:block;border:0;width:16px;height:16px;" />
+                        </td>
+                        <td valign="middle" class="editable" contenteditable="true" style="color:#5c5c5c;">+370 618 00393</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#5c5c5c;padding-bottom:6px;">
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                      <tr>
+                        <td width="18" valign="middle" style="padding-right:7px;">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEKUlEQVR4nO2aT4gcRRTGv9c7rbijkEAkV1mMUZJoNngbiCIBRbx4UVkJHoJExH8jXd2zSyDjITtMV+voCirespAVDN4Ws4IKEXaPWQkJOUj05MFgNErc6HR3PQ/ZlXFTPdPzp7ujqd9tql7VfO9N1dfVPQ0YDAaDwWAwGG5NKE2Q53kPAbhHKXVbxnpGgmVZ7TiOfwiC4Gyv2K4FcBzngGVZcwAeGJm6fLkA4FXf979KCkgsgOM4T1uW9SmAUhbKciRm5mellJ/pOrUFqNVqW5VSFwFszVRaflwZGxu7t9FoXN7cYemimfkZ/H+SB4AtSqnndB3aAiilJrPVUwj7dI3aAhDRnZrmRQBvAfhrhKJGTQhgDsDnmr67dAO0BdBBRNd8368z8x5m/npAgVmyTESTvu+/TkR/pB2UugAbSCm/k1IeYOYXAPzc7/gMuMLMb4yPj+9vNpvn+x3cdwHWYSnlfBiGOwF8DIAHnGcoiOikUmqnlPK9er2uBplDe41nZiLqfUhstVq/ADgshFgA8BER3T+IiAH4nohebjabXww7UZIJ3vCLMvNez/N26eKllKejKNoH4BiA9rCiutAGcCwMw91JyXuet4uZ96adsJ8VsIOZv3Vd9wOl1EwQBP8ymlardQ3AESHEcVxfDY+lFZGSZSI6nLTPq9XqHbZte8xcA3B72kn79YASgNcsyzorhHhCF5CBSfY0uVqt9qht26sAjqKP5IHBz/kTRHTKdd3FMAxfarVaP27qZynlfLVaXbRtuwHgRaS88+yEiE7GcfxKEASXdP0zMzPboyiSSqmDA+QAIKEAqRzwOk/Ztn1OCFEvl8vvb3biIUyyl8mREOJgFEVvA9iWck4tg14GO9lCRO+ura194zjObl2AlPJ0uVyeRO+TZAhgTin1YFLy09PT9wkhviSi4xgyeWC0t7oVy7LOuK77oc4k6/X6nwDqQogT0JtkKpOL47hGRH3t826MYgV0YmPdJD3Pe1wXoDHJVCZXKpXOYACT60VWDzsmmHlJCLFg2/abs7OzP23qZynlvOM4SwDQzeTCMHxHKTWV3pb6I6kAI/k2IpqKoujJJJNMShwdJkdEQ+/zbox6C+j4xySTTpKdCCF2jNLkepHn874KM68mmeSGyQHo6yQ3LHmsgE60JimEeCQrk+tFUU98J5h5yXXdE+ufny9IR7YmmILCEt8g7y1w02EKkNCe1xYoHLMCihZQNKYARQsomqSnwsYEbxVMAYoWUDSmALpGZr6at5CsYebfde1JBVjNVk7+EJE2J20BSqXSAoDfMlWUL7+22+1PdB3aAjQajcvMfAhAnKmsfIiUUofW/6W6gbGkUSsrKxcqlcoyET0M4O7M5GXLeQBTUspTSQFpX5XdA2DiP/aq7MUgCM4VrcVgMBgMBoPBcLPyN/Xis/8bCPojAAAAAElFTkSuQmCC" width="16" height="16" alt="" style="display:block;border:0;width:16px;height:16px;" />
+                        </td>
+                        <td valign="middle" class="editable" contenteditable="true" style="color:#5c5c5c;">alge.virbickaite@curiocollectionvilnius.com</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#5c5c5c;">
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                      <tr>
+                        <td width="18" valign="middle" style="padding-right:7px;">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFbElEQVR4nO1bTWxUVRT+zntvTGbGccdCpSsNtmgQI/FnBjYsTTS6BAXDookkJNCx7zUtCT4wtjN3hnZDSIxGY1OURAk/iXFjwsLOJBU0CImaIlGpaKKgYpmI8/OOi07rhEI79+c9TJhvN/PO+e6535z7d94doIMOOujgDgZF2VhfX9/9juOkiWgVM3cBSDUfzRLRDDNP1+v18tjY2KWoYgpdgGw222Xb9jYAm4iou023bwB8AOBdIcRP4UUXogDZbLYrFovtY+YXAcQUaapENFGtVveElRV2CJzkuu5O27aPAHhCsw0bwGO2bfem0+lr5XL5lJkQ/4PRDPA8L8XMh4joWZO8LTiWSCS2+L5/zRShMQEGBwdXNBqNTwA8borzZmDmU0EQPLN///7LJviMCOB5XgrASYTc+RacBrBRCDGrS2QZCIaY+RCi6zwArAMwDgM/oPYk6LruTiLaqcujgO5MJnO5VCp9rkOipaDneSsxt2bfrcOjgdlardajs0TqDoF9uH2dB4BULBbzdQiUMyCbzXY5jnMB6pscU6gCeEB1x+iottrc3ip1noi+ZubjzDzd/LwKwPMAehTo7gLwMoA3VGJRFgDAJgWfq8y8XQhxGADf8Gy353mbieggM9+jEIuSAEpDoDn5zUi6XSWiDfl8/txSRv39/Wts2/5MVgTHce4bHh7+RTIm5UnwKVkHZt6+XOcBoFgsnmXmHbL89Xr9aVkfQFEAZm73WAtgbswXCoXD7doLISaY+dswY5qHagaslLQ/hsVjfilw00cGsjEBUBSAiKTW/iAIzis0I+uTWt5kMVQzoC5jTETSk62sj2VZUjEt+Kk4AbgiY0xED8o2wMxSPswsFdM8VIfAbzL2zPwCJJZc3/ctzG2MZGL6VcZ+HkoCBEFwVtKlx/O8ze0aVyqVlyQKqKoxAVAUwHEc6docER3s7+9fs5zdwMDAo0R0QJKeVWICNA5DnuedByA1TonoL2beIYSYwA3Lou/7VvOXPwD5GX1aCPGQpA8AvbPACQBZGYfm9nbcdd0hIjrestnpqVQqz8mmfQvvCRU/QEMAIjrKzFICtPh2A+hWWB1vxXdE1Ve5IBKPx8tEFNkrrCVwMZFIKJfFlAXwfT9g5rdV/U2Bmd/yfT9Q9dcqiTmO8yaAmg6HJupE9I4OgZYAzfP3UR0OTXwkhPhZh0D7vQARDUPupGcKHATBiC6JtgD5fP4rAB/r8ijgeLFYVNr9tcLEmyEA2ItosyBg5r0miIwIIIQ4DaDtio8umHmiUCicMcFlKgNgWdYQgH9M8S2B60EQ7DFFZuyCxOTk5J+ZTCYBYIMpzpuBiHKFQsHYymMsAwCgVqu9DuCCSc4b8F08Hleq/98KRgUYGxv7G0AvQpoQgyDY7vv+dZOcRgUAACHESQDvm+Zl5vFisfipaV7jAgBAo9HYBcDIFZYmfmdm1yDfAkIRoHl/xzPFx8yvFotFpZrfcgjjmhwAoFQqnclkMqsBPKzDQ0RHhRCDhsJahFAyYIHcsl4BcFHVn4guWZbVazCkRQhVgFwu9wczbwWgcl4PiGjryMiIUr2/XYQ2BOZRLpd/TKfTKSJKy/gxc14IEXrBJdQMmEcymdzNzG2XrYloKplMvhZmTAttRdEIsHCn6AsAK5YxvWJZ1rpcLvdDBGFFkwEAMDo6OoO5qyyNJcwCZt4cVeeBCOaAVpRKpe8zmUwDwMabPSeiISHEe1HGFKkAAFAqlSbXr1//CIDVrd8T0Yf5fH5X1PFENgRawNVqdQsRTbV892Wj0diG21BbjPQ/Q60YGhq6t16vT2EuC58M+68x/0u4rrvWdd21tzuODjrooIM7Fv8CQbLJDVJvkgUAAAAASUVORK5CYII=" width="16" height="16" alt="" style="display:block;border:0;width:16px;height:16px;" />
+                        </td>
+                        <td valign="middle" class="editable" contenteditable="true" style="color:#5c5c5c;">Universiteto str. 14, Vilnius</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:0;line-height:0;font-size:0;">
+        <a href="https://www.grandhotelvilnius.com/" target="_blank" style="text-decoration:none;border:0;">
+          <img src="https://raw.githubusercontent.com/NachoOvando/Hotel_Vilnus_email_assets/main/FOTOS_GIF_comprimido.gif" width="600" height="120" alt="Grand Hotel Vilnius" style="display:block;border:0;width:600px;height:120px;" />
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:0;line-height:0;font-size:0;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="400" style="padding:0;line-height:0;font-size:0;">
+              <img src="https://raw.githubusercontent.com/NachoOvando/Hotel_Vilnus_email_assets/main/banner.png" width="400" height="80" alt="I'm a Challenger - Are you Curious?" style="display:block;border:0;width:400px;height:80px;" />
+            </td>
+            <td width="8" style="padding:0;line-height:0;font-size:0;">&nbsp;</td>
+            <td width="80" valign="middle" align="center" style="padding:0;">
+              <a href="https://preview.mailerlite.io/forms/2278337/185243928894637145/share" target="_blank" style="text-decoration:none;border:0;">
+                <img src="https://raw.githubusercontent.com/NachoOvando/Hotel_Vilnus_email_assets/main/QR.png" width="80" height="80" alt="Are you Curious? - Escaneá el QR" style="display:block;border:0;width:80px;height:80px;" />
+              </a>
+            </td>
+            <td width="112" valign="middle" align="left" style="padding:0 0 0 10px;font-size:0;line-height:0;">
+              <a href="https://preview.mailerlite.io/forms/2278337/185243928894637145/share" target="_blank" style="text-decoration:none;">
+                <span style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#5c5c5c;line-height:16px;">Join our<br/>newsletter!</span>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px 0 0 0;">
+        <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-style:italic;line-height:14px;color:#767676;">
+          If you are not a designated recipient, you may not review, copy, or distribute this message. If you receive this message in error, please notify the sender by replying to this email and delete this message. Please note that the information contained in this message may be privileged and confidential, and protected from disclosure. Any distribution of the information and/or attachments of this message shall only be done with the authorization of the sender.
+        </p>
+      </td>
+    </tr>
+
+  </table>
+  <!-- ===== FIN FIRMA ===== -->
+
+  <button id="copyBtn" onclick="copiarFirma()">📋 Copy signature</button>
+  <div id="status"></div>
+</div>
+
+<script>
+// Forzar pegado como texto plano (evita que arrastre el color/formato del origen)
+document.querySelectorAll('.editable').forEach(function(el) {
+  el.addEventListener('paste', function(e) {
+    e.preventDefault();
+    const texto = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, texto);
+  });
+  // Si el navegador igual inserta un <a> automático al tipear (Safari "smart links"), lo desarmamos
+  el.addEventListener('input', function() {
+    el.querySelectorAll('a').forEach(function(a) {
+      a.replaceWith(document.createTextNode(a.textContent));
+    });
+  });
+});
+
+async function copiarFirma() {
+  const nodo = document.getElementById('firma-container');
+  const html = nodo.outerHTML;
+  const texto = nodo.innerText;
+  const statusEl = document.getElementById('status');
+  try {
+    const item = new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([texto], {type: 'text/plain'})
+    });
+    await navigator.clipboard.write([item]);
+    statusEl.textContent = '✅ Signature copied! Now paste it into Gmail (Settings → Signature).';
+  } catch (err) {
+    // Fallback: selección manual + Ctrl+C
+    const range = document.createRange();
+    range.selectNode(nodo);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    statusEl.textContent = '⚠️ Signature selected. Now press Ctrl+C (or Cmd+C on Mac) and paste it into Gmail.';
+  }
+}
+</script>
+
+</body>
+</html>
